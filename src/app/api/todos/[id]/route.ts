@@ -55,3 +55,17 @@ export async function PUT(request: Request, {params}: Segments ){
         return NextResponse.json({ message: error }, { status: 400 });
     }
 }
+
+export async function DELETE(request: Request, {params}: Segments ){
+
+    const id = params.id;
+    const todo = await prisma.todo.findFirst( {where: { id }});
+
+    if( !todo ) return NextResponse.json({ message: `Todo with ${id} not found` }, { status: 400 });
+
+    const deletedTodo = await prisma.todo.delete({ where: { id } });
+
+    return NextResponse.json({
+        deletedTodo
+    });
+}
