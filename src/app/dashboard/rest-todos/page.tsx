@@ -1,10 +1,19 @@
+'use client';
 
-export default function RestTodosPage(){
+import prisma from "@/lib/prisma";
+
+
+// eslint-disable-next-line @next/next/no-async-client-component
+export default async function RestTodosPage(){
+
+    const todos = await prisma.todo.findMany({ orderBy: { id: 'desc' } })
+    
+
     return(
         <>
-            <span className='text-5xl'>
-                Hola RestTodosPage
-            </span>
+            {
+                JSON.stringify(todos)
+            }
         </>
     )
 }
