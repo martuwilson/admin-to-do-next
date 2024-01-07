@@ -6,49 +6,17 @@ import {
 export async function GET(request: Request){
 
     await prisma.todo.deleteMany(); // delete all todos
-    
-
-    // Preparar insersion de datos
-    /* const todo = await prisma.todo.create(
-        //insertar la data
-        {
-            data: {
-                description: 'Piedra del alma',
-                complete: true,
-            }
-        }
-    )
-
-    console.log(todo); */
+        
 
     
     await prisma.todo.createMany({
         data: [
-            {
-                description: 'Piedra del alma',
-                complete: true,
-            },
-            {
-                description: 'Piedra del tiempo',
-                complete: false,
-            },
-            {
-                description: 'Piedra del poder',
-                complete: false,
-            },
-            {
-                description: 'Piedra del espacio',
-                complete: false,
-            },
-            {
-                description: 'Piedra de la mente',
-                complete: false,
-            },
-            {
-                description: 'Piedra de la realidad',
-                complete: false,
-            },
-        ]
+            { description: 'Piedra del alma', complete: true },
+            { description: 'Piedra del poder' },
+            { description: 'Piedra del tiempo' },
+            { description: 'Piedra del espacio' },
+            { description: 'Piedra del realidad' },
+          ]
     })
 
     return NextResponse.json({
