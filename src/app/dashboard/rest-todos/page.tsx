@@ -1,6 +1,7 @@
 'use client';
 
 import prisma from "@/lib/prisma";
+import { TodosGrid } from "@/todos";
 
 
 // eslint-disable-next-line @next/next/no-async-client-component
@@ -11,9 +12,8 @@ export default async function RestTodosPage(){
 
     return(
         <>
-            {
-                JSON.stringify(todos)
-            }
+            {/* formulario todos */}
+            <TodosGrid todos={todos} />
         </>
     )
 }
