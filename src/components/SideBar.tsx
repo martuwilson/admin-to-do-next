@@ -3,6 +3,27 @@
 import Image from 'next/image'
 import { CiLogout } from 'react-icons/ci'
 import { SideBarItem } from '.'
+import { IoCalendarOutline, IoCheckboxOutline, IoListOutline } from 'react-icons/io5'
+
+
+const menuItem = [
+    {
+        icon: <IoCalendarOutline />,
+        title: 'Dashboard',
+        path: '/dashboard'
+    },
+    {
+        icon: <IoCheckboxOutline />,
+        title: 'Rest TODOS',
+        path: '/dashboard/rest-todos'
+    },
+    {
+        icon: <IoListOutline />,
+        title: 'Server Actions',
+        path: '/dashboard/server-actions'
+    }
+]
+
 
 export const SideBar = () => {
     return (
@@ -36,7 +57,10 @@ export const SideBar = () => {
 
                 <ul className="space-y-2 tracking-wide mt-8">
                     
-                    <SideBarItem/>
+                    {menuItem.map((item) => (
+                        <SideBarItem key={item.path} {...item} />
+                    ))}
+                    
 
                     
                 </ul>
