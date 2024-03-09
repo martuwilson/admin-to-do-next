@@ -35,7 +35,7 @@ export async function GET(request: Request, { params }: Segments ) {
 
 
 const putSchema = yup.object({
-  completed: yup.boolean().optional(),
+  complete: yup.boolean().optional(),
   description: yup.string().optional(),
 })
 
@@ -49,12 +49,12 @@ export async function PUT(request: Request, { params }: Segments ) {
   }
 
   try {
-    const { completed, description } =  await putSchema.validate( await request.json() );
+    const { complete, description } =  await putSchema.validate( await request.json() );
   
   
     const updatedTodo = await prisma.todo.update({
       where: { id: params.id },
-      data: { completed, description }
+      data: { complete, description }
     })
   
   
