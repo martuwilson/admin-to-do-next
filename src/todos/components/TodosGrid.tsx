@@ -3,8 +3,9 @@
 import { Todo } from "@prisma/client"
 import { TodoItem } from "./TodoItem";
 
-import * as todosApi from '@/todos/helpers/todos';
+// import * as todosApi from '@/todos/helpers/todos'; // sin server actions
 import { useRouter } from "next/navigation";
+import { toggleTodo } from "../actions/todo-actions";
 
 
 interface Props {
@@ -16,13 +17,14 @@ export const TodosGrid = ({ todos = [] }: Props) => {
 
   const router = useRouter();
 
-  
-  const toggleTodo = async(id: string, complete: boolean) => {
+  // sin server actions
+  /* const toggleTodo = async(id: string, complete: boolean) => {
     const updatedTodo = await todosApi.updateTodo( id, complete );
     console.log({updatedTodo});
     router.refresh();
-  }
+  } */
 
+  // con server actions directo en el TodoItem
 
   
   return (

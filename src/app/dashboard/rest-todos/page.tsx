@@ -19,6 +19,7 @@ export default async function RestTodosPage() {
       </div>
       
       <TodosGrid todos={ todos } />
+
     </div>
   );
 }
